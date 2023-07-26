@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>U2 D3 Flexbox</title>
+    <style>
+        .container {
+            max-width: 900px;
+            margin-inline: auto;
+            background-color: aliceblue;
+            margin-bottom: 2rem;
+            display: flex;
+        }
+
+
+        h2 {
+            max-width: 900px;
+            margin-inline: auto;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+        }
+
+        .antique {
+            background-color: antiquewhite;
+        }
+
+        .aqua {
+            background-color: aqua;
+        }
+
+        .coral {
+            background-color: coral;
+        }
+
+        .crimson {
+            background-color: crimson;
+        }
+
+        #n1 {
+            /* flex-direction: row;
+            non serve perché è già il default */
+        }
+
+        #n2 {
+            flex-direction: row-reverse;
+        }
+
+        #n3 {
+            flex-direction: column;
+        }
+
+        #n4 {
+            justify-content: center;
+        }
+
+        #n5 {
+            justify-content: flex-end;
+        }
+
+        #n6 {
+            justify-content: space-around;
+        }
+
+        #n7 {
+            justify-content: space-evenly;
+        }
+
+        #n8 {
+            justify-content: space-between;
+        }
+
+        #n9 {
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 50vh;
+            /*abbiamo allungato il contenitore per avere spazio extra in cui distribuire (verticalmente) i nostri elementi */
+        }
+
+        #n10 {
+            flex-direction: column;
+            min-height: 50vh;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #n11 {
+            flex-direction: column;
+            min-height: 50vh;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        #n12,
+        #n13 {
+            justify-content: space-between;
+            align-items: center;
+            min-height: 50vh;
+        }
+
+        #n13 .box:nth-of-type(2) {
+            height: unset;
+            align-self: stretch;
+        }
+
+        #n14,
+        #n15 {
+            flex-wrap: wrap;
+            align-content: flex-start;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        #n16 {
+            min-height: 50vh;
+        }
+
+        #n16 .box,
+        #n17 .box {
+            height: unset;
+        }
+
+        #n16 .box.coral {
+            background-image: url(https://images.unsplash.com/photo-1690151711465-2bfe4e69f241?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=711&q=80);
+            background-size: cover;
+            background-position: center;
+        }
+
+        #n17 {
+            align-items: baseline;
+            min-height: 70vh;
+        }
+
+        #n17 img {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>PROPRIETA' DEI CONTENITORI FLEX</h2>
+    <h2>Contenitore flex</h2>
+    <!-- n1 ha direzione di default "row" ovvero da sinistra a destra orizzontalmente -->
+    <div id="n1" class="container">
+        <div class="box antique">1</div>
+        <div class="box coral">2</div>
+        <div class="box aqua">3</div>
+    </div>
+
+    <h2>Contenitore flex orizzontale invertito</h2>
+    <!-- n2 con direzione row-reverse inverte anche l'ordine degli elementi -->
+    <div id="n2" class="container">
+        <div class="box antique">1</div>
+        <div class="box coral">2</div>
+        <div class="box aqua">3</div>
+    </div>
+
+    <h2>Contenitore flex verticale</h2>
+    <!-- n3 diventa un contenitore verticale (condizione di default con elementi di blocco uno sotto l'altro, con il vantaggio di avere le proprietà flex a disposizione) -->
+    <div id="n3" class="container">
+        <div class="box antique">1</div>
+        <div class="box coral">2</div>
+        <div class="box aqua">3</div>
+    </div>
+
+    <h2>Contenitore flex con distribuzione orizzontale degli elementi - centrati</h2>
+    <div id="n4" class="container">
+        <div class="box antique">1</div>
+        <div class="box coral">2</div>
+        <div class="box aqua">3</div>
+    </div>
+    <h2>Contenitore flex con distribuzione orizzontale degli elementi - allineati in fondo</h2>
+    <div id="n5" class="container">
+        <div class="box antique">1</div>
+        <div class="box coral">2</div>
+        <div class="box aqua">3</div>
+    </div>
+    <h2>Contenitore flex con distribuzione orizzontale degli elementi - con spazio prima e dopo ogni elemento (around)
+    </h2>
+    <div id="n6" class="container">
+        <div class="box antique">1</div>
+        <div class="box coral">2</div>
+        <div class="box aqua">3</div>
+    </div>
+    <h2>Contenitore flex con distribuzione orizzontale degli elementi - con spazio uguale tra ogni elemento, anche prima
+        e dopo (evenly)
+    </h2>
+    <div id="n7" class="container">
+        <div class="box antique">1</div>
+        <div class="box coral">2</div>
+        <div class="box aqua">3</div>
+    </div>
+    <h2>Contenitore flex con distribuzione orizzontale degli elementi - con spazio solo tra un elemento e l'altro
+        (between)
+    </h2>
+    <div id="n8" class="container">
+        <div class="box antique">1</div>
+        <div class="box coral">2</div>
+        <div class="box aqua">3</div>
+    </div>
+    <h2>Contenitore flex VERTICALE con justify-content
+        (between)
+    </h2>
+    <div id="n9" class="container">
+        <div class="box antique">1</div>
+        <div class="box coral">2</div>
+        <div class="box aqua">3</div>
+    </div>
+    <h2>Contenitore flex VERTICALE con justify-content
+        (between) && CENTRATI nella CROSS-AXIS con align-items: center
+    </h2>
+    <div id="n10" class="container">
+        <div class="box antique">1</div>
+        <div class="box coral">2</div>
+        <div class="box aqua">3</div>
+    </div>
+    <h2>Contenitore flex VERTICALE con justify-content
+        (between) && portati alla fine della direzione opposta (CROSS-AXIS) con align-items: flex-end
+    </h2>
+    <div id="n11" class="container">
+        <div class="box antique">1</div>
+        <div class="box coral">2</div>
+        <div class="box aqua">3</div>
+    </div>
+
+    <h2>Contenitore flex ORIZZONTALE con distribuzione degli elementi sulla main-axis con spazio in mezzo
+        (justify-content: between) && centrati sulla cross-axis (align-items: center)</h2>
+    <div id="n12" class="container">
+        <div class="box antique">1</div>
+        <div class="box coral">2</div>
+        <div class="box aqua">3</div>
+    </div>
+
+    <h2>Contenitore flex ORIZZONTALE con elementi distribuiti in orizzontale e verticale come sopra, e con singolo
+        elemento che fa l'override sulla cross-axis con align-self: stretch</h2>
+    <div id="n13" class="container">
+        <div class="box antique">1</div>
+        <div class="box coral">io sono più alto degli altri</div>
+        <div class="box aqua">3</div>
+    </div>
+    <h2>Flex-wrap + align-content per permettere agli elementi di andare su una nuova linea quando finisce lo spazio
+        orizzontale,
+        possiamo gestire lo spazio tra le linee con align-content. justify-content per distribuzione orizzontale.</h2>
+    <div id="n14" class="container">
+        <div class="box antique">1</div>
+        <div class="box coral">2</div>
+        <div class="box aqua">3</div>
+        <div class="box crimson">4</div>
+        <div class="box antique">5</div>
+    </div>
+
+
+    <hr>
+    <h2>PROPRIETA' DEI FLEX ITEMS</h2>
+
+    <h2>Spostiamo il quarto elemento in prima posizione e il terzo in ultima</h2>
+    <div id="n15" class="container">
+        <div class="box antique">1</div>
+        <div class="box coral">2</div>
+        <div class="box aqua" style="order: 1">3</div>
+        <div class="box crimson" style="order:-1">4</div>
+        <div class="box antique">5</div>
+    </div>
+
+    <h2>Facciamo "crescere" i nostri flex-items</h2>
+    <div id="n16" class="container">
+        <div class="box antique" style="flex-grow: 1; flex-shrink:0;"></div>
+        <div class="box coral" style="flex-grow: 5; flex-shrink: 5;"></div>
+        <div class="box aqua" style="flex-shrink:0;"></div>
+    </div>
+
+    <h2>align-items: baseline</h2>
+    <div id="n17" class="container">
+        <div class="box antique"><img src="./twitter.png" alt="">
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis, facilis rem. Hic placeat, minima
+                odio repellat aspernatur aut ea, alias dolore quisquam at numquam possimus quam voluptatum neque ducimus
+                doloribus.</p>
+        </div>
+        <div class="box coral"><img src="./instagram.png" alt="">
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis, facilis rem. Hic placeat, minima
+                odio repellat aspernatur aut ea</p>
+        </div>
+        <div class="box aqua"><img src="./youtube.png" alt="">
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis, facilis rem. Hic placeat, minima
+                odio repellat aspernatur aut ea, alias dolore quisquam at numquam possimus quam voluptatum neque ducimus
+                doloribus.</p>
+        </div>
+    </div>
+</body>
+
+</html>

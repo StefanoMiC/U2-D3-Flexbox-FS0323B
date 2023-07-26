@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esempi Flexbox</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        h2 {
+            margin-top: 0;
+            line-height: .8;
+        }
+
+        h3 {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        header {
+            background-color: antiquewhite;
+            display: flex;
+            align-items: center;
+            min-height: 60px;
+            padding-inline: 3rem;
+            justify-content: space-between;
+        }
+
+        header>div {
+            width: 40px;
+            height: 40px;
+            background-color: black;
+            border-radius: 50%;
+            margin-right: 3px;
+        }
+
+        header ul {
+            margin-right: auto;
+
+        }
+
+        header ul li {
+            display: inline-block;
+        }
+
+        header button {
+            position: relative;
+        }
+
+        .notification-icon {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background-color: red;
+            top: -50%;
+            right: -8px;
+            border-radius: 50%;
+            color: white;
+            font-size: 0.7rem;
+        }
+
+        main {
+            min-height: calc(100vh - 60px);
+            /* 100% del viewport - altezza header */
+            background-color: blue;
+            display: flex;
+        }
+
+        main aside {
+            width: 230px;
+            background-color: red;
+            display: flex;
+            flex-direction: column;
+        }
+
+        main aside ul {
+            list-style: none;
+            color: white;
+            padding: 0;
+            margin: 0;
+        }
+
+        main aside ul li {
+            height: 36px;
+            display: flex;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.366);
+            padding-inline-start: 3rem;
+        }
+
+        main aside ul li:not(:last-child) {
+            border-bottom: 1px solid white;
+        }
+
+        main aside button {
+            margin-top: auto;
+            margin-inline: 10px;
+            margin-bottom: 10px;
+        }
+
+        main aside>div {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        main aside>div img {
+            flex-grow: 1
+        }
+
+        main .main-content {
+            flex-grow: 1;
+            background-color: black;
+            color: white;
+            padding: 1.5rem;
+        }
+
+        .cards {
+            display: flex;
+            /* gap: 6px; */
+            row-gap: 6px;
+            /* per non rompere la griglia orizzontalmente, aggiungiamo solo spazio tra le righe e non tra una colonna e l'altra */
+            flex-wrap: wrap;
+        }
+
+        .card {
+            border: 1px solid rgb(182, 182, 241);
+            border-radius: 6px;
+            overflow: hidden;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card img {
+            width: 100%;
+            display: block;
+        }
+
+        .card-body {
+            padding: 0.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-body p {
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+            font-size: .85rem;
+        }
+
+        .card-body button {
+            margin-top: auto;
+        }
+
+        @media (max-width: 550px) {
+            header {
+                flex-direction: column;
+                padding-block: 1.5rem;
+            }
+
+            header ul {
+                padding: 0;
+                margin-right: unset;
+            }
+
+            main aside {
+                display: none;
+            }
+        }
+
+        @media (min-width: 550px) {
+            .card {
+                width: 50%;
+            }
+        }
+
+        @media (min-width: 900px) {
+            .card {
+                width: 33.33%;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .card {
+                width: 25%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div style="flex-shrink: 0;"> </div>
+        <span>Brand</span>
+        <ul>
+            <li>item-1</li>
+            <li>item-2</li>
+            <li>item-3</li>
+            <li>item-4</li>
+            <li>item-5</li>
+        </ul>
+
+
+
+        <button>CTA <span class="notification-icon">2</span></button>
+
+    </header>
+    <main>
+        <aside>
+            <ul>
+                <li>elemento-1</li>
+                <li>elemento-2</li>
+                <li>elemento-3</li>
+                <li>elemento-4</li>
+            </ul>
+            <div>
+                <img src="./weather.png" width="30" alt="">
+                <img src="./weather.png" width="30" alt="">
+                <img src="./weather.png" width="30" alt="">
+                <img src="./weather.png" width="30" alt="">
+                <img src="./weather.png" width="30" alt="">
+            </div>
+            <button>Sign Up</button>
+        </aside>
+        <div class="main-content">
+
+            <h2>Main Title</h2>
+
+            <div class="cards">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1662574428732-ddf362376719?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1229&q=80"
+                        alt="">
+                    <div class="card-body">
+                        <h3>title</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, a.</p>
+                        <button>Buy Now</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1662574428732-ddf362376719?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1229&q=80"
+                        alt="">
+                    <div class="card-body">
+                        <h3>title</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet minus magnam ab repellat
+                            atque distinctio facilis illum recusandae quis, deleniti maiores, provident ad molestiae
+                            tenetur ut ipsa, veritatis quaerat itaque.</p>
+                        <button>Buy Now</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1662574428732-ddf362376719?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1229&q=80"
+                        alt="">
+                    <div class="card-body">
+                        <h3>title</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, a.</p>
+                        <button>Buy Now</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1662574428732-ddf362376719?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1229&q=80"
+                        alt="">
+                    <div class="card-body">
+                        <h3>title</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed ex iste voluptate facere itaque
+                            omnis, repellat magnam commodi fuga voluptates architecto quis sunt laudantium totam nulla
+                            tempora mollitia ea possimus minima tenetur distinctio enim, nisi corporis tempore!
+                            Reiciendis, aspernatur debitis.</p>
+                        <button>Buy Now</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1662574428732-ddf362376719?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1229&q=80"
+                        alt="">
+                    <div class="card-body">
+                        <h3>title</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, a.</p>
+                        <button>Buy Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>
